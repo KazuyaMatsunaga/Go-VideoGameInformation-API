@@ -1,0 +1,12 @@
+version: "3"
+services:
+  api:
+      build:
+        context: .
+      command: reflex -r '\.go$$' -s -- sh -c 'go run cmd/api/main.go -port=1991'
+      container_name: game-information-api
+      ports:
+        - 1991:1991
+      volumes:
+        - .:/app
+      working_dir: /app
