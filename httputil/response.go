@@ -52,6 +52,9 @@ func RespondErrorJson(w http.ResponseWriter, code int, err error) {
 		he := HTTPError{
 			Message: err.Error(),
 		}
+		if code >= 500 {
+			he.Message = ""
+		}
 		RespondJSON(w, code, he)
 	}
 }
