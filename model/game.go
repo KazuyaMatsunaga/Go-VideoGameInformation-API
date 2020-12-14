@@ -7,6 +7,6 @@ import (
 type Game struct {
 	ID int64 `db:"id"`
 	Title string `db:"title" json:"title"`
-	Price string `db:"price" json:"price"`
-	ReleaseDate time.Time `db:"release_date" json:"release_date"`
+	CreatedTime      time.Time   `db:"ctime" json:"created_time"`
+	UpdatedTime      time.Time   `db:"utime" json:"updated_time"`
 }
