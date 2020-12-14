@@ -4,7 +4,7 @@ import (
 	"time"
 )
 
-type ExecutedGetImageRequest struct{
+type ExecutedScrpForGetImage struct{
 	ID int64 `db:"id"`
-	ExecutedGetImgRequestDateTime time.Time `db:"executed_get_image_request_datetime" json:"executed_get_image_request_datetime"`
+	ExecutedScrpForGetImgAt time.Time `db:"executed_scraping_for_get_image_at" json:"executed_scraping_for_get_image_at"`
 }
