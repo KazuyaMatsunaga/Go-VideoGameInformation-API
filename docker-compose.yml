@@ -24,5 +24,13 @@ services:
       volumes:
         - data-volume:/var/lib/mysql
 
+  migration:
+      image: flyway/flyway
+      depends_on:
+        - db
+      container_name: game-information-migration
+      volumes:
+        - ./database/migration/schema:/flyway/sql
+
 volumes:
   data-volume:
