@@ -4,7 +4,11 @@ import (
 	"fmt"
 	"flag"
 
-	scrapingtask "github.com/KazuyaMatsunaga/Go-VideoGameInformation-API/scrapingtask"
+	spRepo "github.com/KazuyaMatsunaga/Go-VideoGameInformation-Scraping/pkg/repository"
+	spSVC "github.com/KazuyaMatsunaga/Go-VideoGameInformation-Scraping/pkg/service"
+
+	PkgRepo "github.com/KazuyaMatsunaga/Go-VideoGame-Package-Search/pkg/repository"
+	PkgSvc "github.com/KazuyaMatsunaga/Go-VideoGame-Package-Search/pkg/service"
 )
 
 var (
@@ -16,13 +20,22 @@ func main() {
 
 	switch *info {
 	case "genre":
-		genreList := scrapingtask.scrapingGenre()
+		repo := spRepo.NewGenreClient()
+		s := spSVC.NewGenreService(repo)
+		genreList := s.Genre()
 		fmt.Printf("%v\n", genreList)
 	case "platform":
-		pfList := scrapingtask.scrapingPf()
+		repo := spRepo.NewPlatformClient()
+		s := spSVC.NewPlatformService(repo)
+		pfList := s.Platform()
 		fmt.Printf("%v\n", pfList)
 	case "detail":
-		detailList := scrapingtask.scrapingDetail()
+		repo := spRepo.NewDetailClient()
+		s := spSVC.NewDetailService(repo)
+		details := s.Detail()
+		repoPkg := PkgRepo.NewPackageClient()
+		sP := PkgSvc.NewPackageService(repoPkg)
+		detailList := sP.Package(details)
 		fmt.Printf("%v\n", detailList)
 	}
 }
