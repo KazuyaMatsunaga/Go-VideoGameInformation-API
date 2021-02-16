@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	server "github.com/Go-VideoGameInformation-API"
+	server "github.com/KazuyaMatsunaga/Go-VideoGameInformation-API"
 )
 
 func main() {

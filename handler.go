@@ -1,7 +1,7 @@
 package server
 
 import (
-	"github.com/Go-VideoGameInformation-API/httputil"
+	"github.com/KazuyaMatsunaga/Go-VideoGameInformation-API/httputil"
 	"net/http"
 )
 
