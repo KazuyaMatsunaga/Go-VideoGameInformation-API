@@ -3,7 +3,7 @@ services:
   api:
       build:
         context: .
-      command: reflex -r '\.go$$' -s -- sh -c 'go run cmd/api/main.go -port=1991'
+      command: reflex -r '\.go$$' -s -- sh -c 'go run cmd/api/main.go -port=1991 -databaseDatasource="${DATABASE_DATASOURCE}"'
       container_name: game-information-api
       ports:
         - 1991:1991

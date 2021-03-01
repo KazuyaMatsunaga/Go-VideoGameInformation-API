@@ -3,6 +3,8 @@ DBNAME:=game_information
 DOCKER_DNS:=db
 FLYWAY_CONF?=-url=jdbc:mysql://$(DOCKER_DNS):3306/$(DBNAME) -user=root -password=password
 
+export DATABASE_DATASOURCE:=root:password@tcp($(DOCKER_DNS):3306)/$(DBNAME)
+
 docker-compose/build:
 	docker-compose build
 
@@ -51,3 +53,6 @@ flyway/repair:
 
 flyway/baseline:
 	docker-compose run --rm $(MIGRATION_SERVICE) $(FLYWAY_CONF) baseline
+
+task/genre:
+	@go run cmd/task/main.go --info genre

@@ -9,6 +9,10 @@ import (
 
 	PkgRepo "github.com/KazuyaMatsunaga/Go-VideoGame-Package-Search/pkg/repository"
 	PkgSvc "github.com/KazuyaMatsunaga/Go-VideoGame-Package-Search/pkg/service"
+
+	"github.com/KazuyaMatsunaga/Go-VideoGameInformation-API/model"
+	"github.com/KazuyaMatsunaga/Go-VideoGameInformation-API/service"
+	"github.com/KazuyaMatsunaga/Go-VideoGameInformation-API/db"
 )
 
 var (
@@ -16,14 +20,34 @@ var (
 )
 
 func main() {
+	var databaseDatasource string
+	flag.StringVar(&databaseDatasource, "databaseDatasource", "root:password@tcp(localhost:3306)/game_information", "Should looks like root:password@tcp(hostname:port)/dbname")
 	flag.Parse()
+	cs := db.NewDB(databaseDatasource)
+	dbcon, err := cs.Open()
+	if err != nil {
+		fmt.Errorf("failed db init. %s", err)
+	}
 
 	switch *info {
 	case "genre":
 		repo := spRepo.NewGenreClient()
 		s := spSVC.NewGenreService(repo)
 		genreList := s.Genre()
-		fmt.Printf("%v\n", genreList)
+		for _, g := range genreList {
+			newGenre := model.Genre{
+				GenreAbbrName: g.Addr,
+				GenreName: g.Name,
+			}
+			if newGenre.GenreAbbrName == "" || newGenre.GenreName == "" {
+				continue
+			}
+			genreService := service.NewGenre(dbcon)
+			_, err := genreService.Write(&newGenre)
+			if err != nil {
+				fmt.Errorf("failed write for genre. %s", err)
+			}
+		}
 	case "platform":
 		repo := spRepo.NewPlatformClient()
 		s := spSVC.NewPlatformService(repo)
