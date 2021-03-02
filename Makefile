@@ -54,5 +54,11 @@ flyway/repair:
 flyway/baseline:
 	docker-compose run --rm $(MIGRATION_SERVICE) $(FLYWAY_CONF) baseline
 
+API_SERVICE:=api
 task/genre:
-	@go run cmd/task/main.go --info genre
+	docker-compose exec $(API_SERVICE) \
+		go run cmd/task/main.go --info genre -databaseDatasource="${DATABASE_DATASOURCE}"
+
+task/platform:
+	docker-compose exec $(API_SERVICE) \
+		go run cmd/task/main.go --info platform -databaseDatasource="${DATABASE_DATASOURCE}"
