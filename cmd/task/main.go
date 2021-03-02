@@ -21,7 +21,7 @@ var (
 
 func main() {
 	var databaseDatasource string
-	flag.StringVar(&databaseDatasource, "databaseDatasource", "root:password@tcp(localhost:3306)/game_information", "Should looks like root:password@tcp(hostname:port)/dbname")
+	flag.StringVar(&databaseDatasource, "databaseDatasource", "root:password@tcp(db:3306)/game_information", "Should looks like root:password@tcp(hostname:port)/dbname")
 	flag.Parse()
 	cs := db.NewDB(databaseDatasource)
 	dbcon, err := cs.Open()
@@ -45,14 +45,29 @@ func main() {
 			genreService := service.NewGenre(dbcon)
 			_, err := genreService.Write(&newGenre)
 			if err != nil {
-				fmt.Errorf("failed write for genre. %s", err)
+				fmt.Errorf("failed write for genre. %s\n", err)
 			}
 		}
+		fmt.Println("finish write for genre.\n")
 	case "platform":
 		repo := spRepo.NewPlatformClient()
 		s := spSVC.NewPlatformService(repo)
 		pfList := s.Platform()
-		fmt.Printf("%v\n", pfList)
+		for _, p := range pfList {
+			newPf := model.Platform{
+				PfAbbrName: p.Addr,
+				PfName: p.Name,
+			}
+			if newPf.PfAbbrName == "" || newPf.PfName == "" {
+				continue
+			}
+			pfService := service.NewPlatform(dbcon)
+			_, err := pfService.Write(&newPf)
+			if err != nil {
+				fmt.Errorf("failed write for platform. %s\n", err)
+			}
+		}
+		fmt.Println("finish write for platform.\n")
 	case "detail":
 		repo := spRepo.NewDetailClient()
 		s := spSVC.NewDetailService(repo)

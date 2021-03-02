@@ -57,5 +57,8 @@ func (s *Server) Route() *mux.Router {
 	genreController := controller.NewGenre(s.db)
 	r.Methods(http.MethodGet).Path("/genre/all").Handler(AppHandler{genreController.Index})
 
+	pfController := controller.NewPlatform(s.db)
+	r.Methods(http.MethodGet).Path("/platform/all").Handler(AppHandler{pfController.Index})
+
 	return r
 }
