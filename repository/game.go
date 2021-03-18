@@ -3,8 +3,8 @@ package repository
 import (
 	"database/sql"
 
-	"github.com/jmoiron/sqlx"
 	"github.com/KazuyaMatsunaga/Go-VideoGameInformation-API/model"
+	"github.com/jmoiron/sqlx"
 )
 
 func AllGame(db *sqlx.DB) ([]model.Game, error) {
@@ -18,7 +18,7 @@ func AllGame(db *sqlx.DB) ([]model.Game, error) {
 
 func GetGame(db *sqlx.DB, ga *model.Game) (*model.Game, error) {
 	var gav model.Game
-	if err := db.Get(&gav,`SELECT id, title FROM game WHERE id = ? LIMIT 1`, ga.ID); err != nil {
+	if err := db.Get(&gav, `SELECT id, title FROM game WHERE id = ? LIMIT 1`, ga.ID); err != nil {
 		return nil, err
 	}
 	return &gav, nil

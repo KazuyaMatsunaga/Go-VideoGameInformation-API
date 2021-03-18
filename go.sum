@@ -1,3 +1,7 @@
+bou.ke/monkey v1.0.2 h1:kWcnsrCNUatbxncxR/ThdYqbytgOIArtYWqcQLQzKLI=
+bou.ke/monkey v1.0.2/go.mod h1:OqickVX3tNx6t33n1xvtTtu85YN5s6cKwVug+oHMaIA=
+github.com/DATA-DOG/go-sqlmock v1.5.0 h1:Shsta01QNfFxHCfpW6YH2STWB0MudeXXEWMr20OEh60=
+github.com/DATA-DOG/go-sqlmock v1.5.0/go.mod h1:f/Ixk793poVmq4qj/V1dPUg2JEAKC73Q5eFN3EC/SaM=
 github.com/KazuyaMatsunaga/Go-VideoGame-Package-Search v0.0.0-20210208195942-7106f8c4d578 h1:FyVkVuWTOR0tFrZ2pDftHTehmcql/aL6Kac0Z94r2yA=
 github.com/KazuyaMatsunaga/Go-VideoGame-Package-Search v0.0.0-20210208195942-7106f8c4d578/go.mod h1:IRt5g1ctw6vzd4gGuQm2UTpLbN1eWha60rsAIqpankA=
 github.com/KazuyaMatsunaga/Go-VideoGameInformation-Scraping v0.0.0-20210131163914-8eb7cdd5da40/go.mod h1:7A+gCn8XbA4R92R7LMVLSeVYoT/Qh4OoXu08ig9R+Xw=

@@ -4,8 +4,8 @@ import (
 	"database/sql"
 	"time"
 
-	"github.com/jmoiron/sqlx"
 	"github.com/KazuyaMatsunaga/Go-VideoGameInformation-API/model"
+	"github.com/jmoiron/sqlx"
 )
 
 func WritePfAndRlDate(db *sqlx.Tx, ga *model.Game, pf *model.Platform, rlDate time.Time) (result sql.Result, err error) {

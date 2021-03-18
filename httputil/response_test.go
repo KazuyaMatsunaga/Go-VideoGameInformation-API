@@ -31,12 +31,12 @@ func TestReturnErrorWhen4XX(t *testing.T) {
 	RespondErrorJson(w, 400, errors.New("client side error"))
 
 	resp := w.Result()
-	body ,err := ioutil.ReadAll(resp.Body)
+	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		t.Fatalf("Unexpected err: %v", err)
 	}
 
-	if a, e := string(body), `{"message":"client side error"}` ; a != e {
+	if a, e := string(body), `{"message":"client side error"}`; a != e {
 		t.Fatalf("Expect %v but got %v", e, a)
 	}
 }
@@ -46,7 +46,7 @@ func TestRespondJSONReturn500WhenNil(t *testing.T) {
 	RespondJSON(w, 200, nil)
 
 	resp := w.Result()
-	body ,err := ioutil.ReadAll(resp.Body)
+	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		t.Fatalf("Unexpected err: %v", err)
 	}

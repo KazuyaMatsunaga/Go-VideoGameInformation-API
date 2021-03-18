@@ -3,13 +3,13 @@ package repository
 import (
 	"database/sql"
 
-	"github.com/jmoiron/sqlx"
 	"github.com/KazuyaMatsunaga/Go-VideoGameInformation-API/model"
+	"github.com/jmoiron/sqlx"
 )
 
 func GetPkg(db *sqlx.DB, pkg *model.PackageImg) (*model.PackageImg, error) {
 	var pkgv model.PackageImg
-	if err := db.Get(&pkgv,`SELECT id, package_image_url FROM package_image WHERE package_image_url = ? LIMIT 1`, pkg.PackageImgURL); err != nil {
+	if err := db.Get(&pkgv, `SELECT id, package_image_url FROM package_image WHERE package_image_url = ? LIMIT 1`, pkg.PackageImgURL); err != nil {
 		return nil, err
 	}
 	return &pkgv, nil
