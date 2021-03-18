@@ -2,20 +2,20 @@ package server
 
 import (
 	"fmt"
-	"log"
-	"github.com/gorilla/mux"
 	"github.com/gorilla/handlers"
+	"github.com/gorilla/mux"
 	"github.com/jmoiron/sqlx"
+	"log"
 	"net/http"
 	"os"
 
-	"github.com/KazuyaMatsunaga/Go-VideoGameInformation-API/db"
 	"github.com/KazuyaMatsunaga/Go-VideoGameInformation-API/controller"
+	"github.com/KazuyaMatsunaga/Go-VideoGameInformation-API/db"
 )
 
 type Server struct {
-	db         *sqlx.DB
-	router     *mux.Router
+	db     *sqlx.DB
+	router *mux.Router
 }
 
 func NewServer() *Server {

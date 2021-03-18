@@ -3,8 +3,8 @@ package repository
 import (
 	"database/sql"
 
-	"github.com/jmoiron/sqlx"
 	"github.com/KazuyaMatsunaga/Go-VideoGameInformation-API/model"
+	"github.com/jmoiron/sqlx"
 )
 
 func AllGenre(db *sqlx.DB) ([]model.Genre, error) {

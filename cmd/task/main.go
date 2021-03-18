@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"flag"
+	"fmt"
 
 	spRepo "github.com/KazuyaMatsunaga/Go-VideoGameInformation-Scraping/pkg/repository"
 	spSVC "github.com/KazuyaMatsunaga/Go-VideoGameInformation-Scraping/pkg/service"
@@ -10,9 +10,9 @@ import (
 	PkgRepo "github.com/KazuyaMatsunaga/Go-VideoGame-Package-Search/pkg/repository"
 	PkgSvc "github.com/KazuyaMatsunaga/Go-VideoGame-Package-Search/pkg/service"
 
+	"github.com/KazuyaMatsunaga/Go-VideoGameInformation-API/db"
 	"github.com/KazuyaMatsunaga/Go-VideoGameInformation-API/model"
 	"github.com/KazuyaMatsunaga/Go-VideoGameInformation-API/service"
-	"github.com/KazuyaMatsunaga/Go-VideoGameInformation-API/db"
 )
 
 var (
@@ -37,7 +37,7 @@ func main() {
 		for _, g := range genreList {
 			newGenre := model.Genre{
 				GenreAbbrName: g.Addr,
-				GenreName: g.Name,
+				GenreName:     g.Name,
 			}
 			if newGenre.GenreAbbrName == "" || newGenre.GenreName == "" {
 				continue
@@ -56,7 +56,7 @@ func main() {
 		for _, p := range pfList {
 			newPf := model.Platform{
 				PfAbbrName: p.Addr,
-				PfName: p.Name,
+				PfName:     p.Name,
 			}
 			if newPf.PfAbbrName == "" || newPf.PfName == "" {
 				continue

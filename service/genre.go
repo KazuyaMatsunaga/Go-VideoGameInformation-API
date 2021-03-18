@@ -1,9 +1,9 @@
 package service
 
 import (
+	"github.com/KazuyaMatsunaga/Go-VideoGameInformation-API/dbutil"
 	"github.com/jmoiron/sqlx"
 	"github.com/pkg/errors"
-	"github.com/KazuyaMatsunaga/Go-VideoGameInformation-API/dbutil"
 
 	"github.com/KazuyaMatsunaga/Go-VideoGameInformation-API/model"
 	"github.com/KazuyaMatsunaga/Go-VideoGameInformation-API/repository"
@@ -38,4 +38,3 @@ func (g *Genre) Write(genre *model.Genre) (int64, error) {
 	}
 	return createdID, nil
 }
-

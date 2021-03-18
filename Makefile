@@ -1,3 +1,12 @@
+test:
+	go test -v ./...
+
+fmt:
+	gofmt -s -w .
+
+errcheck:
+	errcheck ./...
+
 DBNAME:=game_information
 # https://docs.docker.com/docker-for-mac/networking/#use-cases-and-workarounds
 DOCKER_DNS:=db
